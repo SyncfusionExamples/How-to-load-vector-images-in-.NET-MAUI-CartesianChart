@@ -30,6 +30,7 @@
         <local:ColumnSeriesExt ItemsSource="{Binding Data}" 
                                XBindingPath="Age" 
                                YBindingPath="Height" 
+                               Width="0.6"
                                Fill="Transparent"/>
     </chart:SfCartesianChart>
 

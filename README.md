@@ -1,7 +1,6 @@
 # How to load vector images in .NET MAUI CartesianChart
 
-In [.NET MAUI Cartesian Chart](https://www.syncfusion.com/maui-controls/maui-cartesian-charts), you can load and display vector images by customizing the chart series. This guide will walk you through the process using Syncfusion’s SfCartesianChart.
-
+In [.NET MAUI Cartesian Chart](https://www.syncfusion.com/maui-controls/maui-cartesian-charts), you can load and display vector images by customizing the chart series. This guide will walk you through the process to load vector images using Syncfusion’s SfCartesianChart.
 Imagine you want to visualize data with custom images representing each data point in the chart. To achieve this, you need to create a custom series that draws vector images on the chart segments.
 
 **Step 1: Create Custom Series and Segment**
@@ -70,7 +69,8 @@ The following code illustrates how to initialize the SfCartesianChart with custo
     <local:ColumnSeriesExt ItemsSource="{Binding Data}" 
                            XBindingPath="Age" 
                            YBindingPath="Height" 
-                           Fill="Transparent"/>
+                           Fill="Transparent"
+                           Width="0.6"/>
 
 </chart:SfCartesianChart>
 ```
@@ -97,6 +97,7 @@ series.ItemsSource = (new ViewModel()).Data;
 series.XBindingPath = "Age";
 series.YBindingPath = "Height";
 series.Fill = Colors.Transparent;
+series.Width = 0.6;
 
 chart.Series.Add(series);
 this.Content = chart;
@@ -109,16 +110,14 @@ public class ViewModel
 {
     public ObservableCollection<Model> Data { get; set; }
 
-    public Microsoft.Maui.Graphics.IImage? Image { get; set; }
-
     public ViewModel()
     {
         Data = new ObservableCollection<Model>()
         {
-            new Model() { Age = 12, Height = 135, Image = GetImage("AddVectorImage.Resources.Images.age12.png")},
-            new Model() { Age = 14, Height = 165, Image = GetImage("AddVectorImage.Resources.Images.age14.png")},
-            new Model() { Age = 16, Height = 175, Image = GetImage("AddVectorImage.Resources.Images.age16.png")},
-            new Model() { Age = 18, Height = 185, Image = GetImage("AddVectorImage.Resources.Images.age18.png")},
+            new Model() { Age = 12, Height = 135, Image = GetImage("age12")},
+            new Model() { Age = 14, Height = 165, Image = GetImage("age14")},
+            new Model() { Age = 16, Height = 175, Image = GetImage("age16")},
+            new Model() { Age = 18, Height = 185, Image = GetImage("age18")},
         };
     }
 
@@ -126,7 +125,7 @@ public class ViewModel
     {
         Assembly assembly = typeof(MainPage).GetTypeInfo().Assembly;
 
-        using Stream? stream = assembly.GetManifestResourceStream(resourcePath);
+        using Stream? stream = assembly.GetManifestResourceStream("AddVectorImage.Resources.Images." + resourcePath + ".png"); ;
 
         if (stream != null)
         {
@@ -138,4 +137,4 @@ public class ViewModel
 }
 ```
 **Output**
- ![AddVectorImage.png](https://support.syncfusion.com/kb/agent/attachment/article/16708/inline?token=eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjI2MzY5Iiwib3JnaWQiOiIzIiwiaXNzIjoic3VwcG9ydC5zeW5jZnVzaW9uLmNvbSJ9.Y9XXEHiZ08XzWldttNS9qIfRwlj0MJIhUhy0VnC38jU)
+ ![AddVectorImage.png](https://support.syncfusion.com/kb/agent/attachment/article/16708/inline?token=eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjI3MDg5Iiwib3JnaWQiOiIzIiwiaXNzIjoic3VwcG9ydC5zeW5jZnVzaW9uLmNvbSJ9.zutyau7kcblji3rkXtNTsWkheDi5KMgPSlrICHFboo4)
