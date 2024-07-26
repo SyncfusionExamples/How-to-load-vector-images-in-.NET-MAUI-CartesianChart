@@ -1,14 +1,16 @@
 # How to load vector images in .NET MAUI CartesianChart
 
 In [.NET MAUI Cartesian Chart](https://www.syncfusion.com/maui-controls/maui-cartesian-charts), you can load and display vector images by customizing the chart series. This guide will walk you through the process to load vector images using Syncfusion’s SfCartesianChart.
-Imagine you want to visualize data with custom images representing each data point in the chart. To achieve this, you need to create a custom series that draws vector images on the chart segments.
+
+Imagine you want to visualize data with custom images representing each data point in the chart. To achieve this, you need to create a custom series that draws vector images on the custom chart segments.
 
 **Step 1: Create Custom Series and Segment**
+
 To display vector images in the chart, create custom series and segment classes.
 
 **Custom Series**
 
-Create a custom series class by inheriting from the [ColumnSeries](https://help.syncfusion.com/cr/maui/Syncfusion.Maui.Charts.ColumnSeries.html?tabs=tabid-1) class. Override the CreateSegment method to return a custom segment.
+Create a custom series class by inheriting from the [ColumnSeries](https://help.syncfusion.com/cr/maui/Syncfusion.Maui.Charts.ColumnSeries.html?tabs=tabid-1) class. Override the [CreateSegment](https://help.syncfusion.com/cr/maui/Syncfusion.Maui.Charts.ColumnSeries.html#Syncfusion_Maui_Charts_ColumnSeries_CreateSegment) method to return a custom segment.
 
 **[C#]**
 ```
@@ -22,7 +24,7 @@ public class ColumnSeriesExt : ColumnSeries
 ```
 **Custom Segment**
 
-Create a custom segment class by inheriting from the [ColumnSegment](https://help.syncfusion.com/cr/maui/Syncfusion.Maui.Charts.ColumnSegment.html) class. Override the Draw method to draw images on the chart segments.
+Create a custom segment class by inheriting from the [ColumnSegment](https://help.syncfusion.com/cr/maui/Syncfusion.Maui.Charts.ColumnSegment.html) class. Override the [Draw](https://help.syncfusion.com/cr/maui/Syncfusion.Maui.Charts.ColumnSegment.html#Syncfusion_Maui_Charts_ColumnSegment_Draw_Microsoft_Maui_Graphics_ICanvas_) method to draw images on the chart segments.
 
 **[C#]**
 ```
@@ -44,7 +46,7 @@ public class ColumnSegmentExt : ColumnSegment
 
 Refer to the [documentation](https://help.syncfusion.com/maui/cartesian-charts/getting-started) for detailed steps on initializing the SfCartesianChart.
 
-The following code illustrates how to initialize the SfCartesianChart with custom series `ColumnSeriesExt`.
+The following code illustrates how to initialize the SfCartesianChart with custom series **ColumnSeriesExt**.
 
 **[XAML]**
 ```
@@ -102,7 +104,7 @@ series.Width = 0.6;
 chart.Series.Add(series);
 this.Content = chart;
 ```
-**View Model**
+**Step 3: Initialize View Model**
 
 Load the data and the vector image to be displayed in the chart.
 ```
